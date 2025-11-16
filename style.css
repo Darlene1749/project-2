@@ -1,0 +1,66 @@
+/* Theme variables */
+:root{
+  --brand: #BFE8C9; /* pastel green */
+  --brand-dark: #8FCF92;
+  --muted: #6c757d;
+}
+
+body{
+  font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  color: #222;
+  background-color: #ffffff;
+}
+h1,h2,h3,h4{
+  font-family: 'Prompt', 'Poppins', sans-serif;
+}
+
+.navbar-brand{font-size:1.05rem}
+.navbar .btn-outline-success{border-color:var(--brand);color:var(--brand)}
+.navbar .btn-success{background:linear-gradient(0deg,var(--brand),var(--brand));border:0}
+
+.hero-img{max-width:520px;width:100%;}
+
+.feature-card{transition:transform .18s ease, box-shadow .18s ease}
+.feature-card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(16, 185, 129, 0.08)}
+
+.card img{border:4px solid #fff}
+
+/* Spacing and responsive tweaks */
+section{padding-top:2.25rem;padding-bottom:2.25rem}
+@media (min-width:992px){
+  header .display-6{font-size:2.1rem}
+}
+
+/* Footer social small screens */
+footer .btn{border-radius:999px}
+
+/* Accessibility */
+a:focus{outline:3px solid rgba(143,207,146,.25);outline-offset:2px}
+
+/* Utility for center on small */
+.text-md-end{text-align:left}
+@media(min-width:768px){.text-md-end{text-align:right}}
+
+/* Make carousel images consistent */
+#testiCarousel img{width:80px;height:80px;object-fit:cover;border-radius:50%}
+
+/* Readability */
+.lead{font-size:1.05rem}
+
+/* Reduce default link color shift */
+a{color:inherit}
+
+/* Card body consistent */
+.card .card-body{padding-top:1rem}
+
+/* Ensure navbar toggler visible on light bg */
+.navbar-light .navbar-toggler-icon{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23666' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")}
+
+/* Product card tweaks */
+.product-card .card-img-top{height:220px;object-fit:cover}
+.product-card .card-body{min-height:120px}
+.product-card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(16,185,129,0.08)}
+
+@media (max-width:576px){
+  .product-card .card-img-top{height:160px}
+}
