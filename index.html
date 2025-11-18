@@ -19,7 +19,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
     <div class="container">
       <a class="navbar-brand d-flex align-items-center" href="#home">
-        <i class="fa-solid fa-rotate-left fa-lg me-2" style="color:var(--brand);"></i>
+        <img src="S__33316871.jpg" alt="Second Chance Clothing Co." style="height:50px;margin-right:10px;">
         <span class="fw-bold">Second Chance Clothing</span>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
@@ -34,8 +34,8 @@
           <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
         </ul>
         <div class="d-flex ms-3">
-          <a class="btn btn-outline-success me-2 d-none d-lg-inline" href="#features">Shop Now</a>
-          <a class="btn btn-success text-white" href="#contact">Sell With Us</a>
+          <a class="btn btn-outline-success me-2 d-none d-lg-inline" href="login.html">Shop Now</a>
+          <a class="btn btn-success text-white" href="login.html">Sell With Us</a>
         </div>
       </div>
     </div>
@@ -49,16 +49,16 @@
           <h1 class="display-6 fw-bold">ให้เสื้อผ้ามีโอกาสครั้งที่สอง</h1>
           <p class="lead mb-4">Second Chance Clothing Co. — แพลตฟอร์มจำหน่ายเสื้อผ้ามือสองคุณภาพดี ที่คัดสภาพเหมือนใหม่ ผ่านระบบที่โปร่งใสและใช้งานง่าย</p>
           <div class="d-flex gap-2">
-            <a href="#features" class="btn btn-success btn-lg">เริ่มช้อปเลย</a>
-            <a href="#contact" class="btn btn-outline-success btn-lg">เริ่มขายตอนนี้</a>
+            <a href="login.html" class="btn btn-success btn-lg">เริ่มช้อปเลย</a>
+            <a href="login.html" class="btn btn-outline-success btn-lg">เริ่มขายตอนนี้</a>
           </div>
           <ul class="mt-4 list-unstyled d-flex gap-3 small">
             <li><i class="fa-solid fa-circle-check text-success me-1"></i> ตรวจคุณภาพก่อนส่งต่อ</li>
             <li><i class="fa-solid fa-leaf text-success me-1"></i> ลดขยะสิ่งทอ</li>
           </ul>
         </div>
-        <div class="col-md-6 text-center order-1 order-md-2 mb-4 mb-md-0">
-          <img src="IMG_2677.JPG">
+        <div class="col-md-6 text-center hero-col order-1 order-md-2 mb-4 mb-md-0">
+          <img src="IMG_2677.JPG" class="img-fluid hero-img" alt="Second Chance Clothing hero image">
         </div>
       </div>
     </div>
@@ -97,6 +97,38 @@
     </div>
   </section>
 
+  <!-- Product Detail Modal (reusable) -->
+  <div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">รายละเอียดสินค้า</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row g-3">
+            <div class="col-md-6 text-center">
+              <img id="modalImg" src="" alt="" class="img-fluid rounded" style="max-height:420px; object-fit:contain;">
+            </div>
+            <div class="col-md-6">
+              <h4 id="modalTitle" class="fw-bold mb-2">Product Name</h4>
+              <div class="h4 text-success fw-bold mb-3" id="modalPrice">฿0</div>
+              <p id="modalDesc" class="text-muted">รายละเอียด</p>
+              <ul class="list-unstyled small mt-3">
+                <li><strong>ไซส์ / ขนาด:</strong> <span id="modalSize"></span></li>
+                <li><strong>เพศ:</strong> <span id="modalGender"></span></li>
+              </ul>
+              <div class="mt-4">
+                <button id="addCartBtn" class="btn btn-success btn-lg"><i class="fa fa-cart-plus me-2"></i>เพิ่มลงตะกร้า (<span id="modalPriceSmall">฿0</span>)</button>
+              </div>
+              <div class="mt-2 text-muted small">* หมายเหตุ: ระบบตะกร้าจำลอง (Front-end) ยังไม่ได้เชื่อมกับ Backend</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Products / Featured Items -->
   <section id="products" class="py-5 bg-white">
     <div class="container">
@@ -114,7 +146,9 @@
               <p class="text-muted small mb-2">Size M — สภาพดี</p>
               <div class="mt-auto d-flex justify-content-between align-items-center">
                 <div class="fw-bold text-success">฿450</div>
-                <a href="#" class="btn btn-sm btn-outline-success">ดูสินค้า</a>
+           <a href="#" class="btn btn-sm btn-outline-success view-btn" 
+             data-id="p1" data-name="Vintage Jacket" data-price="450" data-img="IMG_2678.JPG"
+             data-desc="เสื้อแจ็คเก็ตผ้าคอตตอนสีขาว ใส่สบาย เหมาะสำหรับสไตล์วินเทจ" data-size="M" data-gender="ผู้หญิง">ดูสินค้า</a>
               </div>
             </div>
           </div>
@@ -128,7 +162,9 @@
               <p class="text-muted small mb-2">Size L — สภาพเหมือนใหม่</p>
               <div class="mt-auto d-flex justify-content-between align-items-center">
                 <div class="fw-bold text-success">฿220</div>
-                <a href="#" class="btn btn-sm btn-outline-success">ดูสินค้า</a>
+           <a href="#" class="btn btn-sm btn-outline-success view-btn" 
+             data-id="p2" data-name="เสื้อเชิ้ตลาย" data-price="220" data-img="IMG_2679.JPG"
+             data-desc="เสื้อเชิ้ตลายสวย เหมาะสำหรับใส่ออกงานหรือใส่ลำลอง สภาพเหมือนใหม่" data-size="L" data-gender="ผู้หญิง">ดูสินค้า</a>
               </div>
             </div>
           </div>
@@ -142,7 +178,9 @@
               <p class="text-muted small mb-2">Size 32 — ยีนส์สภาพดี</p>
               <div class="mt-auto d-flex justify-content-between align-items-center">
                 <div class="fw-bold text-success">฿360</div>
-                <a href="#" class="btn btn-sm btn-outline-success">ดูสินค้า</a>
+           <a href="#" class="btn btn-sm btn-outline-success view-btn" 
+             data-id="p3" data-name="ชุดนอนไม่ได้นอน" data-price="360" data-img="IMG_2680.JPG"
+             data-desc="เซ็ทนอนสไตล์คิวท์ เนื้อผ้านุ่ม สภาพดี" data-size="32" data-gender="ผู้ชาย">ดูสินค้า</a>
               </div>
             </div>
           </div>
@@ -156,14 +194,124 @@
               <p class="text-muted small mb-2">Size S — ลายน่ารัก</p>
               <div class="mt-auto d-flex justify-content-between align-items-center">
                 <div class="fw-bold text-success">฿300</div>
-                <a href="#" class="btn btn-sm btn-outline-success">ดูสินค้า</a>
+           <a href="#" class="btn btn-sm btn-outline-success view-btn" 
+             data-id="p4" data-name="เดรสหน้าร้อน" data-price="300" data-img="IMG_2681.JPG"
+             data-desc="เดรสลายสวย สำหรับหน้าร้อน ให้ลุคสดใส สภาพดี" data-size="S" data-gender="ผู้หญิง">ดูสินค้า</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Product 5 -->
+        <div class="col-6 col-md-4 col-lg-3 product-hidden" style="display:none;">
+          <div class="card product-card h-100 shadow-sm">
+            <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height:220px;color:#ccc;font-size:14px;">
+              <span>สินค้า #5</span>
+            </div>
+            <div class="card-body d-flex flex-column">
+              <h6 class="card-title mb-1">เสื้อสวยๆ</h6>
+              <p class="text-muted small mb-2">Size M — สภาพดี</p>
+              <div class="mt-auto d-flex justify-content-between align-items-center">
+                <div class="fw-bold text-success">฿380</div>
+           <a href="#" class="btn btn-sm btn-outline-success view-btn" 
+             data-id="p5" data-name="เสื้อสวยๆ" data-price="380" data-img="assets/products/product1.jpg"
+             data-desc="เสื้อสวยสภาพดี เหมาะสำหรับแต่งตัวหลากหลายโอกาส" data-size="M" data-gender="ผู้หญิง">ดูสินค้า</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Product 6 -->
+        <div class="col-6 col-md-4 col-lg-3 product-hidden" style="display:none;">
+          <div class="card product-card h-100 shadow-sm">
+            <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height:220px;color:#ccc;font-size:14px;">
+              <span>สินค้า #6</span>
+            </div>
+            <div class="card-body d-flex flex-column">
+              <h6 class="card-title mb-1">กางเกงสวยๆ</h6>
+              <p class="text-muted small mb-2">Size 30 — เหมือนใหม่</p>
+              <div class="mt-auto d-flex justify-content-between align-items-center">
+                <div class="fw-bold text-success">฿280</div>
+           <a href="#" class="btn btn-sm btn-outline-success view-btn" 
+             data-id="p6" data-name="กางเกงสวยๆ" data-price="280" data-img="assets/products/product2.jpg"
+             data-desc="กางเกงเอวยางยืด ใส่สบาย สภาพดี" data-size="30" data-gender="ผู้ชาย">ดูสินค้า</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Product 7 -->
+        <div class="col-6 col-md-4 col-lg-3 product-hidden" style="display:none;">
+          <div class="card product-card h-100 shadow-sm">
+            <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height:220px;color:#ccc;font-size:14px;">
+              <span>สินค้า #7</span>
+            </div>
+            <div class="card-body d-flex flex-column">
+              <h6 class="card-title mb-1">เสื้อโปโลคลาสสิก</h6>
+              <p class="text-muted small mb-2">Size L — สภาพดี</p>
+              <div class="mt-auto d-flex justify-content-between align-items-center">
+                <div class="fw-bold text-success">฿320</div>
+           <a href="#" class="btn btn-sm btn-outline-success view-btn" 
+             data-id="p7" data-name="เสื้อโปโลคลาสสิก" data-price="320" data-img="assets/products/product3.jpg"
+             data-desc="เสื้อโปโลผ้าคุณภาพ ลุคคลาสสิก สภาพดี" data-size="L" data-gender="ผู้ชาย">ดูสินค้า</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Product 8 -->
+        <div class="col-6 col-md-4 col-lg-3 product-hidden" style="display:none;">
+          <div class="card product-card h-100 shadow-sm">
+            <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height:220px;color:#ccc;font-size:14px;">
+              <span>สินค้า #8</span>
+            </div>
+            <div class="card-body d-flex flex-column">
+              <h6 class="card-title mb-1">เสื้อยืดแนวนอน</h6>
+              <p class="text-muted small mb-2">Size M — ลายสวย</p>
+              <div class="mt-auto d-flex justify-content-between align-items-center">
+                <div class="fw-bold text-success">฿150</div>
+           <a href="#" class="btn btn-sm btn-outline-success view-btn" 
+             data-id="p8" data-name="เสื้อยืดแนวนอน" data-price="150" data-img="assets/products/product4.jpg"
+             data-desc="เสื้อยืดลายแนวนอน เบาสบาย สภาพดี" data-size="M" data-gender="ผู้หญิง">ดูสินค้า</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Product 9 -->
+        <div class="col-6 col-md-4 col-lg-3 product-hidden" style="display:none;">
+          <div class="card product-card h-100 shadow-sm">
+            <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height:220px;color:#ccc;font-size:14px;">
+              <span>สินค้า #9</span>
+            </div>
+            <div class="card-body d-flex flex-column">
+              <h6 class="card-title mb-1">แจ็คเก็ตลำลอง</h6>
+              <p class="text-muted small mb-2">Size M — สภาพดี</p>
+              <div class="mt-auto d-flex justify-content-between align-items-center">
+                <div class="fw-bold text-success">฿490</div>
+           <a href="#" class="btn btn-sm btn-outline-success view-btn" 
+             data-id="p9" data-name="แจ็คเก็ตลำลอง" data-price="490" data-img="assets/products/product1.jpg"
+             data-desc="แจ็คเก็ตสไตล์ลำลอง เท่และอบอุ่น" data-size="M" data-gender="ผู้ชาย">ดูสินค้า</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Product 10 -->
+        <div class="col-6 col-md-4 col-lg-3 product-hidden" style="display:none;">
+          <div class="card product-card h-100 shadow-sm">
+            <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height:220px;color:#ccc;font-size:14px;">
+              <span>สินค้า #10</span>
+            </div>
+            <div class="card-body d-flex flex-column">
+              <h6 class="card-title mb-1">ชุดออกงาน</h6>
+              <p class="text-muted small mb-2">Size S — เหมือนใหม่</p>
+              <div class="mt-auto d-flex justify-content-between align-items-center">
+                <div class="fw-bold text-success">฿650</div>
+           <a href="#" class="btn btn-sm btn-outline-success view-btn" 
+             data-id="p10" data-name="ชุดออกงาน" data-price="650" data-img="assets/products/product2.jpg"
+             data-desc="ชุดออกงานสภาพดี เหมาะสำหรับงานพิเศษ" data-size="S" data-gender="ผู้หญิง">ดูสินค้า</a>
               </div>
             </div>
           </div>
         </div>
       </div>
       <div class="text-center mt-4">
-        <a href="#features" class="btn btn-outline-success">ดูสินค้าทั้งหมด</a>
+        <a href="#" id="loadMoreBtn" class="btn btn-outline-success" onclick="toggleProducts(event)">ดูสินค้าทั้งหมด</a>
       </div>
     </div>
   </section>
@@ -218,11 +366,10 @@
           <h5 class="fw-bold">ติดตาม Second Chance Clothing</h5>
           <p class="text-muted mb-2">เพื่อไม่พลาดเทรนด์แฟชั่นรักษ์โลก</p>
         </div>
-        <div class="col-md-6 text-md-end">
-          <a href="https://facebook.com/SecondChanceClothing" class="btn btn-outline-secondary btn-sm me-2" target="_blank"><i class="fab fa-facebook-f me-1"></i>Facebook</a>
-          <a href="https://instagram.com/secondchance.th" class="btn btn-outline-secondary btn-sm me-2" target="_blank"><i class="fab fa-instagram me-1"></i>Instagram</a>
-          <a href="https://line.me/ti/p/@secondchance" class="btn btn-outline-secondary btn-sm me-2" target="_blank"><i class="fa-brands fa-line me-1"></i>Line</a>
-          <a href="https://www.tiktok.com/@secondchance_cloth" class="btn btn-outline-secondary btn-sm" target="_blank"><i class="fa-brands fa-tiktok me-1"></i>TikTok</a>
+        <div class="col-md-6 text-md-end footer-social">
+          <a href="https://www.facebook.com/share/g/1Bb92AGEfF/?mibextid=wwXIfr" class="btn btn-outline-secondary btn-sm me-2" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f me-1"></i>Facebook</a>
+          <a href="https://www.instagram.com/mydream.studi0?igsh=NmpvMWhjNWEzZ2Zz" class="btn btn-outline-secondary btn-sm me-2" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram me-1"></i>Instagram</a>
+          <a href="https://www.tiktok.com/@user508391348?_r=1&_t=ZS-91VadDPYkFD" class="btn btn-outline-secondary btn-sm" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-tiktok me-1"></i>TikTok</a>
         </div>
       </div>
 
@@ -234,6 +381,89 @@
   <script>
     // Insert current year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Toggle hidden products
+    let allProductsShown = false;
+    function toggleProducts(e) {
+      e.preventDefault();
+      const hiddenProducts = document.querySelectorAll('.product-hidden');
+      const btn = document.getElementById('loadMoreBtn');
+      
+      if (allProductsShown) {
+        hiddenProducts.forEach(p => p.style.display = 'none');
+        btn.textContent = 'ดูสินค้าทั้งหมด';
+        allProductsShown = false;
+      } else {
+        hiddenProducts.forEach(p => p.style.display = 'block');
+        btn.textContent = 'ซ่อนสินค้า';
+        allProductsShown = true;
+      }
+    }
+
+    // Product detail modal handling
+    document.addEventListener('DOMContentLoaded', function () {
+      const viewBtns = document.querySelectorAll('.view-btn');
+      viewBtns.forEach(btn => {
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          const d = btn.dataset;
+          const name = d.name || '';
+          const price = d.price || '0';
+          const img = d.img || '';
+          const desc = d.desc || '';
+          const size = d.size || '';
+          const gender = d.gender || '';
+
+          document.getElementById('modalTitle').textContent = name;
+          document.getElementById('modalPrice').textContent = '฿' + price;
+          document.getElementById('modalPriceSmall').textContent = '฿' + price;
+          document.getElementById('modalDesc').textContent = desc;
+          document.getElementById('modalSize').textContent = size;
+          document.getElementById('modalGender').textContent = gender;
+
+          const imgEl = document.getElementById('modalImg');
+          imgEl.src = img;
+          imgEl.alt = name;
+
+          const productModal = new bootstrap.Modal(document.getElementById('productModal'));
+          productModal.show();
+        });
+      });
+
+      // Add to cart (simulated) — require login first, otherwise redirect to login page
+      const addBtn = document.getElementById('addCartBtn');
+      addBtn.addEventListener('click', function () {
+        // check login marker
+        const current = JSON.parse(localStorage.getItem('sc_currentUser') || 'null');
+        if (!current) {
+          // not logged in: send to login page
+          location.href = 'login.html';
+          return;
+        }
+
+        const name = document.getElementById('modalTitle').textContent;
+        const priceText = document.getElementById('modalPriceSmall').textContent || '฿0';
+        const price = priceText.replace(/[฿,\s]/g, '') || '0';
+
+        // simple cart in localStorage
+        const cart = JSON.parse(localStorage.getItem('sc_cart') || '[]');
+        cart.push({ name: name, price: Number(price), qty: 1, addedAt: Date.now(), user: current.username });
+        localStorage.setItem('sc_cart', JSON.stringify(cart));
+
+        // feedback
+        const origHtml = addBtn.innerHTML;
+        addBtn.classList.add('disabled');
+        addBtn.innerHTML = '<i class="fa fa-check me-2"></i>เพิ่มแล้ว ✓';
+        setTimeout(() => {
+          // restore button and close modal
+          addBtn.classList.remove('disabled');
+          addBtn.innerHTML = origHtml;
+          const modalEl = document.getElementById('productModal');
+          const bs = bootstrap.Modal.getInstance(modalEl);
+          if (bs) bs.hide();
+        }, 900);
+      });
+    });
   </script>
 </body>
 </html>

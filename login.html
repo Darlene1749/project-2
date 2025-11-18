@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login — Second Chance Clothing Co.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>body{font-family:'Prompt',system-ui,Arial, sans-serif;background:#f8faf9} .auth-card{max-width:420px}</style>
+</head>
+<body>
+
+  <div class="container d-flex flex-column align-items-center justify-content-center min-vh-100">
+    <!-- Brand centered above the login box -->
+    <a href="index.html" class="text-decoration-none text-center mb-4 d-flex align-items-center justify-content-center">
+      <img src="S__33316871.jpg" alt="logo" style="height:48px; margin-right:12px;">
+      <span class="fs-4 fw-bold text-dark">Second Chance Clothing</span>
+    </a>
+
+    <div class="card auth-card shadow-sm w-100" style="max-width:420px;">
+      <div class="card-body p-4">
+        <h4 class="card-title text-center mb-3">เข้าสู่ระบบ</h4>
+
+        <form id="loginForm">
+          <div class="mb-3">
+            <label class="form-label">ชื่อผู้ใช้</label>
+            <input type="text" class="form-control" id="loginUsername" placeholder="ชื่อผู้ใช้" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">รหัสผ่าน</label>
+            <input type="password" class="form-control" id="loginPassword" placeholder="รหัสผ่าน" required>
+          </div>
+
+          <div class="d-grid gap-2 mt-3">
+            <button type="submit" class="btn btn-primary">เข้าสู่ระบบ</button>
+            <a class="btn btn-outline-success" href="register.html">สร้างบัญชี</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Simple client-side login simulation. If user exists in localStorage sc_users, accept; else warn.
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const u = document.getElementById('loginUsername').value.trim();
+      const p = document.getElementById('loginPassword').value;
+      const users = JSON.parse(localStorage.getItem('sc_users') || '[]');
+      const found = users.find(x => x.username === u && x.password === p);
+      if (found) {
+        // simulate login success: store current user
+        localStorage.setItem('sc_currentUser', JSON.stringify({ username: found.username, name: found.name || '' }));
+        alert('ยินดีต้อนรับ ' + (found.name || found.username) + '!');
+        // redirect to homepage
+        location.href = 'index.html';
+      } else {
+        alert('ไม่พบผู้ใช้หรือรหัสผ่านไม่ถูกต้อง กรุณาลงทะเบียนหรือทดลองอีกครั้ง');
+      }
+    });
+  </script>
+</body>
+</html>
